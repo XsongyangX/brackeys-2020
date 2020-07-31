@@ -67,4 +67,6 @@ Assets/StreamingAssets/**/*.bank.meta
 fmod_editor.log
 
 # fmod project
-# add your location
+Assets/Audio/brackeys-fmod/.cache/*
+Assets/Audio/brackeys-fmod/.unsaved/*
+Assets/Audio/brackeys-fmod/.user/*
