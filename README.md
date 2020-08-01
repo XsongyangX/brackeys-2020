@@ -1,5 +1,5 @@
 # brackeys-2020
-Repo for the Brackeys 2020 2nd game jam. The theme is yet to be known.
+Repo for the Brackeys 2020 2nd game jam. The theme is "Rewind".
 
 # Getting Started
 
