@@ -1,51 +1,77 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This script should be added on the PlayerControler Object.
 /// Usess raycasts to see whats in front of the player, to be interacted with.
 /// Shows tooltip if Player can interact with object
+/// 
+/// Requires: The tape object tag to be set to "Tape"
 /// </summary>
 
 
 public class TapeInteract : MonoBehaviour {
     [Tooltip("Add the playerObject here")]
     [SerializeField]
-    GameObject playerObject;
+    GameObject PlayerObject;
 
     [Tooltip("Set the distance of the raycast for interacting with tapes(Should be arms lenght)")]
     [SerializeField]
     float distanceToInteract;
 
+    [SerializeField]
+    GameObject pressEToolTip;
 
     float playerReach = 1;
-
-    //TEMP VARS
 
     RaycastHit hit;
     Vector3 playerForwardDirection;
 
     // Start is called before the first frame update
-    void Start() {
+    void Start() 
+    {
+        if (pressEToolTip == null) 
+        {
+            //Look up Canvas, and then the pressE Text/Game Object 
+            pressEToolTip = GameObject.Find("Canvas").transform.Find("PressE").gameObject;
 
+        }
+
+        pressEToolTip.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update() 
+    {
         ShootRaycast();
 
     }
 
-    void ShootRaycast() {
+    void ShootRaycast() 
+    {
 
-        playerForwardDirection = playerObject.transform.TransformDirection(Vector3.forward);
+        //get player forward direction
+        playerForwardDirection = PlayerObject.transform.TransformDirection(Vector3.forward);
+
+        //Cast a box ray in front of the player too look for tapes to interact
+        bool FoundTape = Physics.BoxCast(PlayerObject.transform.position, new Vector3(playerReach, playerReach), playerForwardDirection, out hit, Quaternion.identity, distanceToInteract);
+        if (FoundTape && hit.collider.gameObject.tag == "Tape") 
+        {
 
 
-        if (Physics.BoxCast(playerObject.transform.position, new Vector3(playerReach, playerReach), playerForwardDirection, out hit, Quaternion.identity, distanceToInteract)) {
-            //do something if hit object ie
-            Debug.Log(hit.collider.gameObject);
+            if(pressEToolTip.activeSelf == false)
+                pressEToolTip.SetActive(true);
 
+            if (Input.GetKeyDown("E")) {
+                Debug.Log("Interact with tape");
+            }
+        }
+        else 
+        {
+            if (pressEToolTip.activeSelf == true)
+                pressEToolTip.SetActive(false);
 
 
         }
@@ -55,11 +81,12 @@ public class TapeInteract : MonoBehaviour {
     /// This can be disabled, used to just show how the player finds objects and
     /// where is the player looking in a given time.
     /// </summary>
-    void OnDrawGizmos() {
+    void OnDrawGizmos() 
+    {
 
-        Gizmos.DrawRay(playerObject.transform.position, playerForwardDirection * hit.distance);
+        Gizmos.DrawRay(PlayerObject.transform.position, playerForwardDirection * hit.distance);
 
-        Gizmos.DrawWireCube(playerObject.transform.position + playerForwardDirection * hit.distance, new Vector3(playerReach, playerReach));
+        Gizmos.DrawWireCube(PlayerObject.transform.position + playerForwardDirection * hit.distance, new Vector3(playerReach, playerReach));
     }
 }
 
