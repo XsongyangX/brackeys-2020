@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
     // Stores the inputs from the InputSystem
     private Vector2 inputs;
 
+    /// <summary>
+    /// Fixed update may cause stagger issues.
+    /// Update is usually recommended for non-physics interactions.
+    /// Character controller is not a physics-based component like rigid body
+    /// </summary>
     private void FixedUpdate()
     {
         Move();
@@ -69,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="context">The input data</param>
     public void OnPlayerInputMove(InputAction.CallbackContext context)
     {
+        // this may need context checks 
         inputs = context.ReadValue<Vector2>();
     }
 }
