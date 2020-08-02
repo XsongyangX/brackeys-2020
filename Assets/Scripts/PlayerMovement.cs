@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Script controlling the player movement
+/// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     // Reference to the CharacterController
-    [SerializeField] private CharacterController characterController;
+    [SerializeField] private CharacterController characterController = default;
     // Base movement speed
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float movementSpeed = default;
     // Movement speed multiplier (used to run or crouch)
-    [SerializeField] private float movementSpeedMultiplier;
+    [SerializeField] private float movementSpeedMultiplier = default;
     // Gravity's force
     [SerializeField] private float gravityForce = -9.81f;
 
