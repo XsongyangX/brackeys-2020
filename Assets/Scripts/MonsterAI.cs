@@ -4,19 +4,19 @@ using UnityEngine.AI;
 public class MonsterAI : MonoBehaviour
 {
     // Reference to the NavMeshAgent component
-    [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private NavMeshAgent navMeshAgent = default;
     // Patrolling path of the monster
-    [SerializeField] private MonsterPath path;
+    [SerializeField] private MonsterPath path = default;
     // Current status of the monster ----- Visible in inspector just for debugging, after debugging we can hide it in inspector and set its default value to patrolling
-    [SerializeField] private MonsterStatus status;
+    [SerializeField] private MonsterStatus status = default;
     // Minimum distance before it changes node destination
-    [SerializeField] private float minChangeNodeDistance;
+    [SerializeField] private float minChangeNodeDistance = default;
     // Maximum distance to attack the target
-    [SerializeField] private float maxAttackDistance;
+    [SerializeField] private float maxAttackDistance = default;
     // Target to pursue, when visible
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject target = default;
     // Maximum vision angle of the monster (if the target is inside the angle, then pursue it, else keep patrolling)
-    [SerializeField] private float maxVisionAngle;
+    [SerializeField] private float maxVisionAngle = default;
     // Determines if the monster has a valid destination
     private bool hasDestination;
     
