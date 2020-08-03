@@ -16,7 +16,7 @@ using UnityEngine.InputSystem;
 public class TapeInteract : MonoBehaviour {
     [Tooltip("Add the playerObject here")]
     [SerializeField]
-    GameObject PlayerObject;
+    GameObject playerObject = default;
 
     [Tooltip("Set the distance of the raycast for interacting with tapes(Should be arms lenght)")]
     [SerializeField]
@@ -93,4 +93,3 @@ public class TapeInteract : MonoBehaviour {
         
     }
 }
-
