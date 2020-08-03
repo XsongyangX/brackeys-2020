@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 /// <summary>
 /// This script should be added on the PlayerControler Object.
-/// Usess raycasts to see whats in front of the player, to be interacted with.
+/// Uses raycasts to see what's in front of the player, to be interacted with.
 /// Shows tooltip if Player can interact with object
 /// 
 /// Requires: The tape object tag to be set to "Tape"

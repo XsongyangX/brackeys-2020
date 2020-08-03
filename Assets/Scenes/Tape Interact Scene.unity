@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4614d99d9927148adff27a2e4ba364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerObject: {fileID: 1767937425}
+  playerObject: {fileID: 1767937425}
   distanceToInteract: 1
   pressEToolTip: {fileID: 1395091555}
 --- !u!4 &883326496
