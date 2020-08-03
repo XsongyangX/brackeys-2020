@@ -189,3 +189,27 @@ public class MonsterAI : MonoBehaviour
         return nearestIndex;
     }
 }
+
+public enum MonsterStatus
+{
+    Idle,
+    Patrolling,
+    Pursuing,
+    Attacking,
+}
+
+[System.Serializable]
+public class MonsterPath
+{
+    // The nodes in the path
+    public PathNode[] PathNodes;
+    // Points to the next node to go
+    public int NextPathNode;
+}
+
+[System.Serializable]
+public class PathNode
+{
+    // Stores the transform of node GameObject
+    public Transform Position;
+}
