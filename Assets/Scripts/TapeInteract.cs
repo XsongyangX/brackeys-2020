@@ -88,9 +88,4 @@ public class TapeInteract : MonoBehaviour
 
         Gizmos.DrawWireCube(PlayerObject.transform.position + playerForwardDirection * hit.distance, new Vector3(playerReach, playerReach));
     }
-
-    public void OnEKeyPressed()
-    {
-        
-    }
 }
