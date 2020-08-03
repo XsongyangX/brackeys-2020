@@ -55,7 +55,7 @@ public class TapeInteract : MonoBehaviour
     {
 
         //get player forward direction
-        playerForwardDirection = PlayerObject.transform.TransformDirection(Vector3.forward);
+        playerForwardDirection = playerObject.transform.forward;
 
         //Cast a box ray in front of the player too look for tapes to interact
         bool foundTape = Physics.BoxCast(playerObject.transform.position, new Vector3(playerReach, playerReach), playerForwardDirection, out hit, Quaternion.identity, distanceToInteract);
