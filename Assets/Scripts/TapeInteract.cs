@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// This script should be added on the PlayerControler Object.
@@ -64,7 +65,7 @@ public class TapeInteract : MonoBehaviour {
             if(pressEToolTip.activeSelf == false)
                 pressEToolTip.SetActive(true);
 
-            if (Input.GetKeyDown("E")) {
+            if (Keyboard.current.eKey.wasPressedThisFrame) {
                 Debug.Log("Interact with tape");
             }
         }
@@ -72,8 +73,6 @@ public class TapeInteract : MonoBehaviour {
         {
             if (pressEToolTip.activeSelf == true)
                 pressEToolTip.SetActive(false);
-
-
         }
     }
 
@@ -87,6 +86,11 @@ public class TapeInteract : MonoBehaviour {
         Gizmos.DrawRay(PlayerObject.transform.position, playerForwardDirection * hit.distance);
 
         Gizmos.DrawWireCube(PlayerObject.transform.position + playerForwardDirection * hit.distance, new Vector3(playerReach, playerReach));
+    }
+
+    public void OnEKeyPressed()
+    {
+        
     }
 }
 
