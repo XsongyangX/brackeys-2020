@@ -21,7 +21,7 @@ public class TapeInteract : MonoBehaviour
 
     [Tooltip("Set the distance of the raycast for interacting with tapes(Should be arms lenght)")]
     [SerializeField]
-    float distanceToInteract;
+    float distanceToInteract = default;
 
     [SerializeField]
     GameObject pressEToolTip;
