@@ -13,7 +13,8 @@ using UnityEngine.InputSystem;
 /// </summary>
 
 
-public class TapeInteract : MonoBehaviour {
+public class TapeInteract : MonoBehaviour 
+{
     [Tooltip("Add the playerObject here")]
     [SerializeField]
     GameObject playerObject = default;
