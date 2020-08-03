@@ -24,7 +24,7 @@ public class TapeInteract : MonoBehaviour
     float distanceToInteract = default;
 
     [SerializeField]
-    GameObject pressEToolTip;
+    GameObject pressEToolTip = default;
 
     float playerReach = 1;
 
