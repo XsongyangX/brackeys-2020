@@ -84,7 +84,7 @@ public class TapeInteract : MonoBehaviour
     void OnDrawGizmos() 
     {
 
-        Gizmos.DrawRay(PlayerObject.transform.position, playerForwardDirection * hit.distance);
+        Gizmos.DrawRay(playerObject.transform.position, playerForwardDirection * hit.distance);
 
         Gizmos.DrawWireCube(PlayerObject.transform.position + playerForwardDirection * hit.distance, new Vector3(playerReach, playerReach));
     }
