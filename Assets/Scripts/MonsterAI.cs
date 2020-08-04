@@ -20,6 +20,13 @@ public class MonsterAI : MonoBehaviour
     // Determines if the monster has a valid destination
     private bool hasDestination;
     
+    // Called whenever we interact with the linked tape
+    public void OnTapeInteract()
+    {
+        // Just for Debug, here we need the dying animation
+        Destroy(gameObject);
+    }
+
     private void Update()
     {
         if (status != MonsterStatus.Attacking)

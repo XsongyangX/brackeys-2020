@@ -17,19 +17,19 @@ public class TapeInteract : MonoBehaviour
 {
     [Tooltip("Add the playerObject here")]
     [SerializeField]
-    GameObject playerObject = default;
+    private GameObject playerObject = default;
 
     [Tooltip("Set the distance of the raycast for interacting with tapes(Should be arms lenght)")]
     [SerializeField]
-    float distanceToInteract = default;
+    private float distanceToInteract = default;
 
     [SerializeField]
-    GameObject pressEToolTip = default;
+    private GameObject pressEToolTip = default;
 
-    float playerReach = 1;
+    private float playerReach = 1;
 
-    RaycastHit hit;
-    Vector3 playerForwardDirection;
+    private RaycastHit hit;
+    private Vector3 playerForwardDirection;
 
     // Start is called before the first frame update
     void Start() 
@@ -48,7 +48,6 @@ public class TapeInteract : MonoBehaviour
     void Update() 
     {
         ShootRaycast();
-
     }
 
     void ShootRaycast() 
@@ -61,13 +60,13 @@ public class TapeInteract : MonoBehaviour
         bool foundTape = Physics.BoxCast(playerObject.transform.position, new Vector3(playerReach, playerReach), playerForwardDirection, out hit, Quaternion.identity, distanceToInteract);
         if (foundTape && hit.collider.gameObject.CompareTag("Tape"))
         {
-
-
             if(pressEToolTip.activeSelf == false)
                 pressEToolTip.SetActive(true);
 
-            if (Keyboard.current.eKey.wasPressedThisFrame) {
+            if (Keyboard.current.eKey.wasPressedThisFrame) 
+            {
                 Debug.Log("Interact with tape");
+                hit.collider.gameObject.GetComponent<TapeManager>().Interact();
             }
         }
         else 
