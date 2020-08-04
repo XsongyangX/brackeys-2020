@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("Set this equal to how many enemies are gonna spawn in the level")]
     [SerializeField]
-    int maxEnemies;
+    int maxEnemies = default;
 
     int enemiesLeft;
 
