@@ -13,33 +13,33 @@ using UnityEngine.InputSystem;
 /// </summary>
 
 
-public class TapeInteract : MonoBehaviour 
+public class TapeInteract : MonoBehaviour
 {
     [Tooltip("Add the playerObject here")]
     [SerializeField]
-    GameObject playerObject = default;
+    private GameObject playerObject = default;
 
     [Tooltip("Set the distance of the raycast for interacting with tapes(Should be arms lenght)")]
     [SerializeField]
-    float distanceToInteract = default;
+    private float distanceToInteract = default;
 
     [SerializeField]
-    GameObject pressEToolTip = default;
+    private GameObject pressEToolTip = default;
 
-    float playerReach = 1;
+    private float playerReach = 1;
 
-    RaycastHit hit;
-    Vector3 playerForwardDirection;
+    private RaycastHit hit;
+    private Vector3 playerForwardDirection;
 
     /// <summary>
-    /// True when the player can reach the tape detected by raycast
+    /// The tape found by raycast, otherwise null
     /// </summary>
-    private bool canReachTape = false;
+    private TapeManager collidedTape;
 
     // Start is called before the first frame update
-    void Start() 
+    void Start()
     {
-        if (pressEToolTip == null) 
+        if (pressEToolTip == null)
         {
             //Look up Canvas, and then the pressE Text/Game Object 
             pressEToolTip = GameObject.Find("Canvas").transform.Find("PressE").gameObject;
@@ -50,13 +50,12 @@ public class TapeInteract : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() 
+    void Update()
     {
         ShootRaycast();
-
     }
 
-    void ShootRaycast() 
+    void ShootRaycast()
     {
 
         //get player forward direction
@@ -66,19 +65,17 @@ public class TapeInteract : MonoBehaviour
         bool foundTape = Physics.BoxCast(playerObject.transform.position, new Vector3(playerReach, playerReach), playerForwardDirection, out hit, Quaternion.identity, distanceToInteract);
         if (foundTape && hit.collider.gameObject.CompareTag("Tape"))
         {
-
-
-            if(pressEToolTip.activeSelf == false)
+            if (pressEToolTip.activeSelf == false)
                 pressEToolTip.SetActive(true);
 
-            canReachTape = true;
+            collidedTape = hit.collider.gameObject.GetComponent<TapeManager>();
         }
-        else 
+        else
         {
             if (pressEToolTip.activeSelf == true)
                 pressEToolTip.SetActive(false);
 
-            canReachTape = false;
+            collidedTape = null;
         }
     }
 
@@ -86,7 +83,7 @@ public class TapeInteract : MonoBehaviour
     /// This can be disabled, used to just show how the player finds objects and
     /// where is the player looking in a given time.
     /// </summary>
-    void OnDrawGizmos() 
+    void OnDrawGizmos()
     {
 
         Gizmos.DrawRay(playerObject.transform.position, playerForwardDirection * hit.distance);
@@ -100,11 +97,15 @@ public class TapeInteract : MonoBehaviour
     /// <param name="ctx"></param>
     public void Interaction(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && canReachTape) TakeTape();
+        if (ctx.performed && collidedTape != null) TakeTape();
     }
 
+    /// <summary>
+    /// Take the tape, triggers an interaction with the tape in range
+    /// </summary>
     private void TakeTape()
     {
-        Debug.Log("Take a tape");
+        Debug.Log("Interact with tape");
+        collidedTape.Interact();
     }
 }
