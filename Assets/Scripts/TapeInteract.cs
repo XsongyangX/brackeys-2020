@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// This script should be added on the PlayerControler Object.
+/// This script should be added on the PlayerControler Object or the game manager.
 /// Uses raycasts to see what's in front of the player, to be interacted with.
 /// Shows tooltip if Player can interact with object
 /// 
@@ -30,6 +30,11 @@ public class TapeInteract : MonoBehaviour
 
     RaycastHit hit;
     Vector3 playerForwardDirection;
+
+    /// <summary>
+    /// True when the player can reach the tape detected by raycast
+    /// </summary>
+    private bool canReachTape = false;
 
     // Start is called before the first frame update
     void Start() 
@@ -66,14 +71,14 @@ public class TapeInteract : MonoBehaviour
             if(pressEToolTip.activeSelf == false)
                 pressEToolTip.SetActive(true);
 
-            if (Keyboard.current.eKey.wasPressedThisFrame) {
-                Debug.Log("Interact with tape");
-            }
+            canReachTape = true;
         }
         else 
         {
             if (pressEToolTip.activeSelf == true)
                 pressEToolTip.SetActive(false);
+
+            canReachTape = false;
         }
     }
 
@@ -87,5 +92,19 @@ public class TapeInteract : MonoBehaviour
         Gizmos.DrawRay(playerObject.transform.position, playerForwardDirection * hit.distance);
 
         Gizmos.DrawWireCube(playerObject.transform.position + playerForwardDirection * hit.distance, new Vector3(playerReach, playerReach));
+    }
+
+    /// <summary>
+    /// Listener to the Interaction action in input system
+    /// </summary>
+    /// <param name="ctx"></param>
+    public void Interaction(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && canReachTape) TakeTape();
+    }
+
+    private void TakeTape()
+    {
+        Debug.Log("Take a tape");
     }
 }
