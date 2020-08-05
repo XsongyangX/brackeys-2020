@@ -174,6 +174,9 @@ public class MonsterAI : MonoBehaviour
         status = MonsterStatus.Patrolling;
         // Set the destination to null, so that the monster searches for the close node in the path
         hasDestination = false;
+
+        // player takes (fatal) damage
+        target.GetComponent<PlayerHealth>().TakeDamage();
     }
 
     /// <summary>
