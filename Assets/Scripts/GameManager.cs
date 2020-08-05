@@ -33,9 +33,6 @@ public class GameManager : MonoBehaviour
 
     int enemiesLeft;
 
-
-
-
     private void Start() 
     {
         enemiesLeft = maxEnemies;    
