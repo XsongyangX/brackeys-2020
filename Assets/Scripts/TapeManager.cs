@@ -8,11 +8,13 @@ using UnityEngine;
 public class TapeManager : MonoBehaviour
 {
     // Reference to the Monster linked to this tape
-    [SerializeField] private MonsterAI monsterAI = default;
+    public MonsterAI monsterAI;
 
     // Called whenever we interact with the tape
+    /*
     public void Interact()
     {
         monsterAI?.OnTapeInteract();
     }
+    */
 }
