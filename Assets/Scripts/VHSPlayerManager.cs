@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class VHSPlayerManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameManager gameManager = default;
+
     /// <summary>
     /// Called whenever the player interacts with the VHSPlayer
     /// </summary>
@@ -16,6 +19,7 @@ public class VHSPlayerManager : MonoBehaviour
         if (monster)
         {
             // NOTE: Just for Debug. Change with a die animation
+            gameManager.DecrementEnemyCounter();
             Destroy(monster.gameObject);
         }
     }

@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int maxEnemies = default;
 
+    [Tooltip("A text object that displays when winning the level")]
+    [SerializeField]
+    private GameObject victoryMessage = default;
+
     int enemiesLeft;
 
 
@@ -49,6 +53,7 @@ public class GameManager : MonoBehaviour
             //2.Victory screen UI
             //3.Play Victory music
             Debug.Log("You have won");
+            victoryMessage.SetActive(true);
         }
     }
 }
