@@ -26,6 +26,8 @@ public class TapeInteract : MonoBehaviour
     [SerializeField]
     private GameObject pressEToolTip = default;
 
+    [SerializeField] private PlayerInventory playerInventory = default;
+
     private float playerReach = 1;
 
     private RaycastHit hit;
@@ -52,21 +54,44 @@ public class TapeInteract : MonoBehaviour
 
     void ShootRaycast() 
     {
-
         //get player forward direction
         playerForwardDirection = playerObject.transform.forward;
 
         //Cast a box ray in front of the player too look for tapes to interact
-        bool foundTape = Physics.BoxCast(playerObject.transform.position, new Vector3(playerReach, playerReach), playerForwardDirection, out hit, Quaternion.identity, distanceToInteract);
-        if (foundTape && hit.collider.gameObject.CompareTag("Tape"))
+        bool found = Physics.BoxCast(playerObject.transform.position, new Vector3(playerReach, playerReach), playerForwardDirection, out hit, Quaternion.identity, distanceToInteract);
+        
+        if (found)
         {
-            if(pressEToolTip.activeSelf == false)
+            if (pressEToolTip.activeSelf == false)
                 pressEToolTip.SetActive(true);
 
             if (Keyboard.current.eKey.wasPressedThisFrame) 
             {
-                Debug.Log("Interact with tape");
-                hit.collider.gameObject.GetComponent<TapeManager>().Interact();
+                if (hit.collider.gameObject.CompareTag("Tape"))
+                {
+                    Debug.Log("Interact with tape");
+                    // Get the monster linked to the tape
+                    MonsterAI linkedMonster = hit.collider.gameObject.GetComponent<TapeManager>().monsterAI;
+                    
+                    // If the player hasn't a tape in hands yet
+                    if (!playerInventory.HasTapeInHands)
+                    {
+                        // TODO: Here we have to destroy the tape, so that we cannot interact with it anymore
+                        playerInventory.PickupTape(linkedMonster);
+                    }
+                }  
+                else if (hit.collider.gameObject.CompareTag("VHSPlayer"))      
+                {
+                    Debug.Log("Interact with VHS player");
+                    
+                    VHSPlayerManager vhsPlayerManager = hit.collider.gameObject.GetComponent<VHSPlayerManager>();
+                
+                    // If the player has a tape in hands
+                    if (playerInventory.HasTapeInHands)
+                    {
+                        vhsPlayerManager.Interact(playerInventory.MonsterLinkedToTape);
+                    }
+                }  
             }
         }
         else 
