@@ -380,6 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 69080511}
+  mainCamera: {fileID: 32659694}
   movementSpeed: 5
   movementSpeedMultiplier: 1
   gravityForce: -9.81
