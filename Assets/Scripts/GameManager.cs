@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This Script keeps track of level progress. 
@@ -68,5 +69,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("You have won");
             victoryScreen.SetActive(true);
         }
+    }
+
+    /// <summary>
+    /// Back button event listener
+    /// </summary>
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 }
