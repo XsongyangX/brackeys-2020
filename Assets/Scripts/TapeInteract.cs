@@ -38,19 +38,6 @@ public class TapeInteract : MonoBehaviour
     /// </summary>
     private bool isInteractionInRange;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (pressEToolTip == null)
-        {
-            //Look up Canvas, and then the pressE Text/Game Object 
-            pressEToolTip = GameObject.Find("Canvas").transform.Find("PressE").gameObject;
-
-        }
-
-        pressEToolTip.SetActive(false);
-    }
-
     // Update is called once per frame
     void Update()
     {
