@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
+using System.Collections;
 
 public class MonsterAI : MonoBehaviour
 {
@@ -139,7 +141,19 @@ public class MonsterAI : MonoBehaviour
         Debug.Log("The monster has attacked the target!");
 
         // TODO: Just for debug (Call the method the animation is completed)
-        OnAttackCompleted();
+        StartCoroutine(OnAttackCompletedDebug());
+    }
+
+    private IEnumerator OnAttackCompletedDebug()
+    {
+        yield return new WaitForSeconds(1f);
+
+        // Remove the stop state
+        navMeshAgent.isStopped = false;
+        // Set the status to patrolling (pursue would also be ok)
+        status = MonsterStatus.Patrolling;
+        // Set the destination to null, so that the monster searches for the close node in the path
+        hasDestination = false;
     }
 
     /// <summary>

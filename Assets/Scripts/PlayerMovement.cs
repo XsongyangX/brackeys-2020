@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Reference to the CharacterController
     [SerializeField] private CharacterController characterController = default;
+    [SerializeField] private Camera mainCamera = default;
     // Base movement speed
     [SerializeField] private float movementSpeed = default;
     // Movement speed multiplier (used to run or crouch)
@@ -42,17 +43,24 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        // Create the movement struct using the user inputs
-        Vector3 movement = new Vector3(inputs.x, 0, inputs.y);
-        
-        // If the movement isn't null, face towards the movement direction
-        if (movement != Vector3.zero)
-        {
-            transform.forward = movement;
-        }
+        // Get the forward direction for the camera
+        Vector3 forward = mainCamera.transform.forward;
+        // Remove the y component (we don't want the player to face down like the camera)
+        forward.y = 0f;
+
+        // Apply the new forward direction to the transform
+        transform.forward = forward;
+
+        // Create the forward movement using the user inputs and the forward direction
+        Vector3 forwardMovement = transform.forward * inputs.y;
+        // Create the right movement using the user inputs and the right direction
+        Vector3 rightMovement = transform.right * inputs.x;
+
+        // Create the movement direction using the normalized directions
+        Vector3 movement = (forwardMovement + rightMovement).normalized * movementSpeed * movementSpeedMultiplier * Time.deltaTime;
 
         // Move the object
-        characterController.Move(movement * Time.deltaTime * movementSpeed * movementSpeedMultiplier);
+        characterController.Move(movement);
         
         ApplyGravity();
     }
