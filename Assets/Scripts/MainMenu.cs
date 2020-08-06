@@ -20,15 +20,27 @@ public class MainMenu : MonoBehaviour
     /// <summary>
     /// Empty containing the main menu buttons
     /// </summary>
-    public GameObject MainButtons;
+    [SerializeField]
+    private GameObject MainButtons;
 
     /// <summary>
     /// Empty containing the credits
     /// </summary>
-    public GameObject Credits;
+    [SerializeField]
+    private GameObject Credits;
+
+    /// <summary>
+    /// Play button object
+    /// </summary>
+    [SerializeField]
+    private GameObject PlayButton;
 
     public void GoToLevel()
     {
+        // play a sound
+        PlayButton.GetComponent<FMODUnity.StudioEventEmitter>().Play();
+        
+        // TODO: Async loading and scene fading
         SceneManager.LoadScene(levelName);
     }
 

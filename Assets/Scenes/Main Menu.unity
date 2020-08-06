@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: 
+  Event: event:/rewind-main_menu-8.4v2
   PlayEvent: 1
   StopEvent: 2
   AllowFadeout: 1
@@ -1095,8 +1095,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!114 &918251505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,6 +1229,8 @@ GameObject:
   - component: {fileID: 999794528}
   - component: {fileID: 999794527}
   - component: {fileID: 999794526}
+  - component: {fileID: 999794530}
+  - component: {fileID: 999794529}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -1347,6 +1349,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999794524}
   m_CullTransparentMesh: 0
+--- !u!114 &999794529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999794524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/rewind-press_start
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &999794530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999794524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: -1
 --- !u!1 &1052165686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,6 +1935,7 @@ MonoBehaviour:
   levelName: LevelTest
   MainButtons: {fileID: 927749022}
   Credits: {fileID: 944163823}
+  PlayButton: {fileID: 999794524}
 --- !u!4 &1882169924
 Transform:
   m_ObjectHideFlags: 0
