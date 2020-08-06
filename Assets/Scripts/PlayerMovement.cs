@@ -12,8 +12,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera mainCamera = default;
     // Base movement speed
     [SerializeField] private float movementSpeed = default;
-    // Movement speed multiplier (used to run or crouch)
-    [SerializeField] private float movementSpeedMultiplier = default;
+    // Base speed multiplier (not sprinting or crouching)
+    [SerializeField] private float baseSpeedMultiplier = default;
+    // Sprint speed multiplier
+    [SerializeField] private float sprintSpeedMultiplier = default;
+    [SerializeField] private float maxSprintTime = default;
+    [SerializeField] private float sprintRechargeSpeed = default;
     // Gravity's force
     [SerializeField] private float gravityForce = -9.81f;
     // Speed of smoothing the inputs (greater value means smoother transition)
@@ -21,12 +25,35 @@ public class PlayerMovement : MonoBehaviour
 
     // Stores the velocity of the player used to apply gravity to the player
     private Vector3 playerVelocity;
+    // Movement speed multiplier (used to sprint or crouch)
+    private float movementSpeedMultiplier;
     // Stores the inputs from the InputSystem
     private Vector2 inputs;
+    // Is the player sprinting?
+    private bool isSprinting;
+    // Stores how much time left the player can sprint
+    private float sprintTimeLeft;
     // Stores the inputs in a smoothed form, so that the movement is more smoothed
     private Vector2 smoothedInputs;
     // Auxiliary variable used to smooth the inputs
     private Vector2 smoothVelocity;
+
+    private void Start()
+    {
+        movementSpeedMultiplier = baseSpeedMultiplier;
+    }
+
+    private void Update()
+    {
+        if (isSprinting)
+        {
+            ConsumeSprintTime();
+        }
+        else
+        {
+            RechargeSprintTime();
+        }
+    }  
 
     /// <summary>
     /// Fixed update may cause stagger issues.
@@ -92,6 +119,64 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
+    /// Reduces the sprintTimeLeft by Time.deltaTime and if there is no time left, stops the sprint
+    /// </summary>
+    private void ConsumeSprintTime()
+    {
+        if (sprintTimeLeft > 0f)
+        {
+            sprintTimeLeft -= Time.deltaTime;
+        }
+        else
+        {
+            sprintTimeLeft = 0f;
+            StopSprint();
+        }
+    }
+
+    /// <summary>
+    /// Increases the sprintTimeLeft until it reaches its max
+    /// </summary>
+    private void RechargeSprintTime()
+    {
+        if (sprintTimeLeft < maxSprintTime)
+        {
+            sprintTimeLeft += sprintRechargeSpeed * Time.deltaTime;
+        }
+        else
+        {
+            sprintTimeLeft = maxSprintTime;
+        }
+    }
+
+    /// <summary>
+    /// Starts the sprint state
+    /// </summary>
+    private void StartSprint()
+    {
+        if (sprintTimeLeft > 0f)
+        {
+            isSprinting = true;
+            // Change the multiplier to sprintMultiplier
+            movementSpeedMultiplier = sprintSpeedMultiplier;
+
+            // TODO: Here change animation to sprint
+        }
+    }
+
+    /// <summary>
+    /// Stops the sprint state
+    /// </summary>
+    private void StopSprint()
+    {
+        isSprinting = false;
+        // Change the multiplier to baseMultiplier
+        movementSpeedMultiplier = baseSpeedMultiplier;
+
+        // TODO: Here change animation to walk
+    }
+
+    /// <summary>
     /// Event called whenever a Move button (WASD) is pressed
     /// </summary>
     /// <param name="context">The input data</param>
@@ -99,5 +184,24 @@ public class PlayerMovement : MonoBehaviour
     {
         // this may need context checks 
         inputs = context.ReadValue<Vector2>();
+    }
+
+    /// <summary>
+    /// Event called whenever the Shift button is pressed
+    /// </summary>
+    /// <param name="context">The input data</param>
+    public void OnPlayerInputSprint(InputAction.CallbackContext context)
+    {
+        // this may need context checks 
+        float state = context.ReadValue<float>();
+
+        if (state == 1f)
+        {
+            StartSprint();
+        }
+        else
+        {
+            StopSprint();
+        }
     }
 }
