@@ -10,12 +10,12 @@ public class MainMenu : MonoBehaviour
 {
 
     /// <summary>
-    /// String of the name of the scene containing the level.
+    /// String of the name of the scene containing the scene.
     /// that scene must be in the build settings.
     /// </summary>
     [Tooltip("Name of the scene of the level")]
     [SerializeField]
-    private string levelName = "LevelTest";
+    private string sceneName = "LevelTest";
 
     /// <summary>
     /// Empty containing the main menu buttons
@@ -35,13 +35,18 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject PlayButton = default;
 
+    /// <summary>
+    /// Scene transition manager reference
+    /// </summary>
+    [SerializeField]
+    private SceneTransitionManager sceneTransitionManager = default;
+
     public void GoToLevel()
     {
         // play a sound
         PlayButton.GetComponent<FMODUnity.StudioEventEmitter>().Play();
         
-        // TODO: Async loading and scene fading
-        SceneManager.LoadScene(levelName);
+        sceneTransitionManager.FadeToScene(sceneName);
     }
 
     public void ShowCredits()
