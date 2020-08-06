@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Night of the Living Movies
+  m_Text: Night of the Living Tapes
 --- !u!222 &1286744
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   CollisionTag: 
   Event: event:/rewind-main_menu-8.4v2
   PlayEvent: 1
-  StopEvent: 2
+  StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -1946,10 +1946,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: LevelTest
-  MainButtons: {fileID: 927749022}
-  Credits: {fileID: 944163823}
-  PlayButton: {fileID: 999794524}
+  mainButtons: {fileID: 927749022}
+  credits: {fileID: 277617805}
+  playButton: {fileID: 999794524}
   sceneTransitionManager: {fileID: 1618387148}
+  mainCamera: {fileID: 918251500}
 --- !u!4 &1882169924
 Transform:
   m_ObjectHideFlags: 0

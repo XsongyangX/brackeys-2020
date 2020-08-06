@@ -21,38 +21,47 @@ public class MainMenu : MonoBehaviour
     /// Empty containing the main menu buttons
     /// </summary>
     [SerializeField]
-    private GameObject MainButtons = default;
+    private GameObject mainButtons = default;
 
     /// <summary>
     /// Empty containing the credits
     /// </summary>
     [SerializeField]
-    private GameObject Credits = default;
+    private GameObject credits = default;
 
     /// <summary>
     /// Play button object
     /// </summary>
     [SerializeField]
-    private GameObject PlayButton = default;
-
+    private GameObject playButton = default;
+    
     /// <summary>
     /// Scene transition manager reference
     /// </summary>
     [SerializeField]
     private SceneTransitionManager sceneTransitionManager = default;
 
+    /// <summary>
+    /// Main camera (for bg music)
+    /// </summary>
+    [SerializeField]
+    private GameObject mainCamera = default;
+
     public void GoToLevel()
     {
-        // play a sound
-        PlayButton.GetComponent<FMODUnity.StudioEventEmitter>().Play();
+        // play a sound for pressing the start button
+        playButton.GetComponent<FMODUnity.StudioEventEmitter>().Play();
         
+        // send a stop message to the bg music
+        mainCamera.GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+
         sceneTransitionManager.FadeToScene(sceneName);
     }
 
     public void ShowCredits()
     {
-        Credits.SetActive(true);
-        MainButtons.SetActive(false);
+        credits.SetActive(true);
+        mainButtons.SetActive(false);
     }
 
     public void ExitGame()
@@ -62,7 +71,7 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMain()
     {
-        Credits.SetActive(false);
-        MainButtons.SetActive(true);
+        credits.SetActive(false);
+        mainButtons.SetActive(true);
     }
 }
