@@ -75,4 +75,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
     }
+
+    /// <summary>
+    /// Replay button listener
+    /// </summary>
+    public void ReplayButton()
+    {
+        SceneManager.LoadScene("LevelTest");
+    }
 }
