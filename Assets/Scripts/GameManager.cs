@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject defeatScreen = default;
 
+    [Tooltip("An reference to the SceneTransitionManager")]
+    [SerializeField]
+    private SceneTransitionManager sceneTransitionManager = default;
+
     /// <summary>
     /// When the player dies
     /// </summary>
@@ -73,6 +77,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void BackButton()
     {
-        SceneManager.LoadScene("Main Menu");
+        //SceneManager.LoadScene("Main Menu");
+        sceneTransitionManager.FadeToScene("Main Menu");
+    }
+
+    /// <summary>
+    /// Replay button listener
+    /// </summary>
+    public void ReplayButton()
+    {
+        //SceneManager.LoadScene("LevelTest");
+        sceneTransitionManager.FadeToScene("LevelTest");
     }
 }
