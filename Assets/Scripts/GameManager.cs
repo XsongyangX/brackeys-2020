@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This Script keeps track of level progress. 
@@ -15,12 +17,21 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("A text object that displays when winning the level")]
     [SerializeField]
-    private GameObject victoryMessage = default;
+    private GameObject victoryScreen = default;
+
+    [Tooltip("An UI object that displays when defeated")]
+    [SerializeField]
+    private GameObject defeatScreen = default;
+
+    /// <summary>
+    /// When the player dies
+    /// </summary>
+    public void Defeat()
+    {
+        defeatScreen.SetActive(true);
+    }
 
     int enemiesLeft;
-
-
-
 
     private void Start() 
     {
@@ -53,7 +64,15 @@ public class GameManager : MonoBehaviour
             //2.Victory screen UI
             //3.Play Victory music
             Debug.Log("You have won");
-            victoryMessage.SetActive(true);
+            victoryScreen.SetActive(true);
         }
+    }
+
+    /// <summary>
+    /// Back button event listener
+    /// </summary>
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 }
