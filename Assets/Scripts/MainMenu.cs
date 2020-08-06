@@ -21,19 +21,19 @@ public class MainMenu : MonoBehaviour
     /// Empty containing the main menu buttons
     /// </summary>
     [SerializeField]
-    private GameObject MainButtons;
+    private GameObject MainButtons = default;
 
     /// <summary>
     /// Empty containing the credits
     /// </summary>
     [SerializeField]
-    private GameObject Credits;
+    private GameObject Credits = default;
 
     /// <summary>
     /// Play button object
     /// </summary>
     [SerializeField]
-    private GameObject PlayButton;
+    private GameObject PlayButton = default;
 
     public void GoToLevel()
     {
