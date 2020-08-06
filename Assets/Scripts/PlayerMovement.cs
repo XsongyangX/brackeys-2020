@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintRechargeSpeed = default;
     // Gravity's force
     [SerializeField] private float gravityForce = -9.81f;
+    // Speed of smoothing the inputs (greater value means smoother transition)
+    [SerializeField] private float smoothSpeed = default;
 
     // Stores the velocity of the player used to apply gravity to the player
     private Vector3 playerVelocity;
@@ -31,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting;
     // Stores how much time left the player can sprint
     private float sprintTimeLeft;
+    // Stores the inputs in a smoothed form, so that the movement is more smoothed
+    private Vector2 smoothedInputs;
+    // Auxiliary variable used to smooth the inputs
+    private Vector2 smoothVelocity;
 
     private void Start()
     {
@@ -47,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         {
             RechargeSprintTime();
         }
-    }
+    }  
 
     /// <summary>
     /// Fixed update may cause stagger issues.
@@ -56,7 +62,16 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        SmoothInputs();
         Move();
+    }
+
+    /// <summary>
+    /// Smooths the raw user input to achieve a smoothed movement
+    /// </summary>
+    private void SmoothInputs()
+    {
+        smoothedInputs = Vector2.SmoothDamp(smoothedInputs, inputs, ref smoothVelocity, smoothSpeed);
     }
 
     /// <summary>
@@ -78,13 +93,13 @@ public class PlayerMovement : MonoBehaviour
         // Apply the new forward direction to the transform
         transform.forward = forward;
 
-        // Create the forward movement using the user inputs and the forward direction
-        Vector3 forwardMovement = transform.forward * inputs.y;
-        // Create the right movement using the user inputs and the right direction
-        Vector3 rightMovement = transform.right * inputs.x;
+        // Create the forward movement using the smoothed user inputs and the forward direction
+        Vector3 forwardMovement = transform.forward * smoothedInputs.y;
+        // Create the right movement using the smoothed user inputs and the right direction
+        Vector3 rightMovement = transform.right * smoothedInputs.x;
 
-        // Create the movement direction using the normalized directions
-        Vector3 movement = (forwardMovement + rightMovement).normalized * movementSpeed * movementSpeedMultiplier * Time.deltaTime;
+        // Create the movement direction using the forward and right directions
+        Vector3 movement = (forwardMovement + rightMovement) * movementSpeed * movementSpeedMultiplier * Time.deltaTime;
 
         // Move the object
         characterController.Move(movement);
