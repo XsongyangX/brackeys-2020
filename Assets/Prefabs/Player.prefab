@@ -131,7 +131,10 @@ MonoBehaviour:
   characterController: {fileID: 206016772302696228}
   mainCamera: {fileID: 0}
   movementSpeed: 5
-  movementSpeedMultiplier: 1
+  baseSpeedMultiplier: 1
+  sprintSpeedMultiplier: 1.5
+  maxSprintTime: 5
+  sprintRechargeSpeed: 1
   gravityForce: -9.81
 --- !u!114 &206016772302696283
 MonoBehaviour:
@@ -157,3 +160,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59633eeeb3375446b8f29f50814260b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
