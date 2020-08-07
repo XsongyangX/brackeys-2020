@@ -23,7 +23,7 @@
 			<destination>{f643422c-9150-4a8d-95fc-3d5fde90494d}</destination>
 		</relationship>
 		<relationship name="markerTracks">
-			<destination>{e12c1aec-3320-4e3b-a944-41b051e54ce7}</destination>
+			<destination>{0c9b493a-c0b7-4b45-8db0-7d6eec3f9fa7}</destination>
 		</relationship>
 		<relationship name="groupTracks">
 			<destination>{3dcd1b11-74b2-42d4-bbad-3c2c8a6d3715}</destination>
@@ -58,7 +58,7 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{f643422c-9150-4a8d-95fc-3d5fde90494d}" />
-	<object class="MarkerTrack" id="{e12c1aec-3320-4e3b-a944-41b051e54ce7}" />
+	<object class="MarkerTrack" id="{0c9b493a-c0b7-4b45-8db0-7d6eec3f9fa7}" />
 	<object class="GroupTrack" id="{3dcd1b11-74b2-42d4-bbad-3c2c8a6d3715}">
 		<relationship name="modules">
 			<destination>{a2d34013-a9d0-46f1-976f-6c998ff58602}</destination>
@@ -70,6 +70,9 @@
 	<object class="Timeline" id="{a425c135-0358-4a2e-b44d-a50e9485d11e}">
 		<relationship name="modules">
 			<destination>{a2d34013-a9d0-46f1-976f-6c998ff58602}</destination>
+		</relationship>
+		<relationship name="markers">
+			<destination>{3a9f38c1-99e2-4f39-99e5-0f2151b6de1a}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{d3607da1-6f92-4423-aa6b-f05261272290}">
@@ -97,12 +100,9 @@
 			<destination>{cc02632d-f3fe-4f33-b5cc-4532e9c14bb1}</destination>
 			<destination>{5e5eebbb-cde1-434b-95ae-0eec484711c1}</destination>
 			<destination>{5f564fb3-1c6d-496f-9620-42ba36467bbf}</destination>
-			<destination>{cbfe96a0-e114-4b1d-bdaa-e9e710e02fdf}</destination>
 			<destination>{08b2f369-4490-4cfc-8843-c2900c2d3cd5}</destination>
-			<destination>{1abc49c2-3c5d-4015-b9d0-a518aca15674}</destination>
 			<destination>{0b39ede2-1e19-4233-88d4-2cef42d7cb3f}</destination>
 			<destination>{5199eabd-47be-47c4-880c-49304d176631}</destination>
-			<destination>{e3b18245-843a-4db5-9b42-1745075dcfc3}</destination>
 			<destination>{6a5de4a1-dde1-486b-9876-214f570657ba}</destination>
 		</relationship>
 	</object>
@@ -118,6 +118,20 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{d3607da1-6f92-4423-aa6b-f05261272290}</destination>
+		</relationship>
+	</object>
+	<object class="LoopRegion" id="{3a9f38c1-99e2-4f39-99e5-0f2151b6de1a}">
+		<property name="position">
+			<value>0.014999999999999999</value>
+		</property>
+		<property name="length">
+			<value>0.29999999999999999</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{a425c135-0358-4a2e-b44d-a50e9485d11e}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{0c9b493a-c0b7-4b45-8db0-7d6eec3f9fa7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{4ad17f80-fd08-4a2a-a61a-6ba1f4338dfb}">
@@ -143,19 +157,9 @@
 			<destination>{19b01216-c59c-4401-b999-b5fa3e85c849}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{cbfe96a0-e114-4b1d-bdaa-e9e710e02fdf}">
-		<relationship name="audioFile">
-			<destination>{a6ad920d-865f-4689-887b-ee4748a9b7de}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{08b2f369-4490-4cfc-8843-c2900c2d3cd5}">
 		<relationship name="audioFile">
 			<destination>{a0fc67c7-75f3-43d2-9693-7aeac346df63}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{1abc49c2-3c5d-4015-b9d0-a518aca15674}">
-		<relationship name="audioFile">
-			<destination>{6f866a6c-3a70-4283-b87d-69caca2438b8}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{0b39ede2-1e19-4233-88d4-2cef42d7cb3f}">
@@ -166,11 +170,6 @@
 	<object class="SingleSound" id="{5199eabd-47be-47c4-880c-49304d176631}">
 		<relationship name="audioFile">
 			<destination>{dcf5ac62-554f-4206-a6ae-29093565b3bd}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{e3b18245-843a-4db5-9b42-1745075dcfc3}">
-		<relationship name="audioFile">
-			<destination>{d03c2826-1ab2-4055-b175-0d9668e995fb}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{6a5de4a1-dde1-486b-9876-214f570657ba}">

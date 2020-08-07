@@ -38,9 +38,23 @@ public class PlayerMovement : MonoBehaviour
     // Auxiliary variable used to smooth the inputs
     private Vector2 smoothVelocity;
 
+    private Vector3 movement;
+
+    /// <summary>
+    /// Reference to the animator controller
+    /// </summary>
+    [SerializeField]
+    private Animator animator = default;
+
+    /// <summary>
+    /// Reference to the audio manager
+    /// </summary>
+    private PlayerAudio playerAudio;
+
     private void Start()
     {
         movementSpeedMultiplier = baseSpeedMultiplier;
+        playerAudio = GetComponent<PlayerAudio>();
     }
 
     private void Update()
@@ -85,6 +99,12 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
+        // Prevent the character to rotating to the wrong direction when there is no input
+        if (inputs.x == 0f && inputs.y == 0f)
+        {
+            return;
+        }
+
         // Get the forward direction for the camera
         Vector3 forward = mainCamera.transform.forward;
         // Remove the y component (we don't want the player to face down like the camera)
@@ -99,7 +119,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 rightMovement = transform.right * smoothedInputs.x;
 
         // Create the movement direction using the forward and right directions
-        Vector3 movement = (forwardMovement + rightMovement) * movementSpeed * movementSpeedMultiplier * Time.deltaTime;
+        movement = (forwardMovement + rightMovement) * movementSpeed * movementSpeedMultiplier * Time.deltaTime;
+
+        // Apply the new forward direction to the transform
+        transform.forward = movement;
 
         // Move the object
         characterController.Move(movement);
@@ -161,6 +184,9 @@ public class PlayerMovement : MonoBehaviour
             movementSpeedMultiplier = sprintSpeedMultiplier;
 
             // TODO: Here change animation to sprint
+            animator.SetFloat("SprintMultiplier", 1.5f);
+            playerAudio.Running.Play();
+            playerAudio.Footsteps.Stop();
         }
     }
 
@@ -174,6 +200,9 @@ public class PlayerMovement : MonoBehaviour
         movementSpeedMultiplier = baseSpeedMultiplier;
 
         // TODO: Here change animation to walk
+        animator.SetFloat("SprintMultiplier", 1f);
+        playerAudio.Running.Stop();
+        playerAudio.Footsteps.Play();
     }
 
     /// <summary>
@@ -182,6 +211,12 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="context">The input data</param>
     public void OnPlayerInputMove(InputAction.CallbackContext context)
     {
+        if (context.performed || context.started)
+            animator.SetBool("IsWalking", true);
+
+        if (context.canceled)
+            animator.SetBool("IsWalking", false);
+
         // this may need context checks 
         inputs = context.ReadValue<Vector2>();
     }

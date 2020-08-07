@@ -57,9 +57,12 @@ public class TapeInteract : MonoBehaviour
 
         if (found)
         {
-            if (pressEToolTip.activeSelf == false)
-                pressEToolTip.SetActive(true);
-
+            if (hit.collider.gameObject.CompareTag("Tape")     ||
+                hit.collider.gameObject.CompareTag("VHSPlayer")  )
+            {
+                if (pressEToolTip.activeSelf == false)
+                    pressEToolTip.SetActive(true);
+            }
         }
         else
         {
@@ -70,7 +73,6 @@ public class TapeInteract : MonoBehaviour
 
     private void InteractVHSPlayer()
     {
-        Debug.Log("Interact with VHS player");
 
         VHSPlayerManager vhsPlayerManager = hit.collider.gameObject.GetComponent<VHSPlayerManager>();
 
