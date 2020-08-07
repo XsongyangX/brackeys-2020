@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     // Auxiliary variable used to smooth the inputs
     private Vector2 smoothVelocity;
 
+    private Vector3 movement;
+
     /// <summary>
     /// Reference to the animator controller
     /// </summary>
@@ -91,6 +93,12 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
+        // Prevent the character to rotating to the wrong direction when there is no input
+        if (inputs.x == 0f && inputs.y == 0f)
+        {
+            return;
+        }
+
         // Get the forward direction for the camera
         Vector3 forward = mainCamera.transform.forward;
         // Remove the y component (we don't want the player to face down like the camera)
@@ -105,7 +113,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 rightMovement = transform.right * smoothedInputs.x;
 
         // Create the movement direction using the forward and right directions
-        Vector3 movement = (forwardMovement + rightMovement) * movementSpeed * movementSpeedMultiplier * Time.deltaTime;
+        movement = (forwardMovement + rightMovement) * movementSpeed * movementSpeedMultiplier * Time.deltaTime;
+
+        // Apply the new forward direction to the transform
+        transform.forward = movement;
 
         // Move the object
         characterController.Move(movement);
