@@ -10,44 +10,58 @@ public class MainMenu : MonoBehaviour
 {
 
     /// <summary>
-    /// String of the name of the scene containing the level.
+    /// String of the name of the scene containing the scene.
     /// that scene must be in the build settings.
     /// </summary>
     [Tooltip("Name of the scene of the level")]
     [SerializeField]
-    private string levelName = "LevelTest";
+    private string sceneName = "LevelTest";
 
     /// <summary>
     /// Empty containing the main menu buttons
     /// </summary>
     [SerializeField]
-    private GameObject MainButtons = default;
+    private GameObject mainButtons = default;
 
     /// <summary>
     /// Empty containing the credits
     /// </summary>
     [SerializeField]
-    private GameObject Credits = default;
+    private GameObject credits = default;
 
     /// <summary>
     /// Play button object
     /// </summary>
     [SerializeField]
-    private GameObject PlayButton = default;
+    private GameObject playButton = default;
+    
+    /// <summary>
+    /// Scene transition manager reference
+    /// </summary>
+    [SerializeField]
+    private SceneTransitionManager sceneTransitionManager = default;
+
+    /// <summary>
+    /// Main camera (for bg music)
+    /// </summary>
+    [SerializeField]
+    private GameObject mainCamera = default;
 
     public void GoToLevel()
     {
-        // play a sound
-        PlayButton.GetComponent<FMODUnity.StudioEventEmitter>().Play();
+        // play a sound for pressing the start button
+        playButton.GetComponent<FMODUnity.StudioEventEmitter>().Play();
         
-        // TODO: Async loading and scene fading
-        SceneManager.LoadScene(levelName);
+        // send a stop message to the bg music
+        mainCamera.GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+
+        sceneTransitionManager.FadeToScene(sceneName);
     }
 
     public void ShowCredits()
     {
-        Credits.SetActive(true);
-        MainButtons.SetActive(false);
+        credits.SetActive(true);
+        mainButtons.SetActive(false);
     }
 
     public void ExitGame()
@@ -57,7 +71,7 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMain()
     {
-        Credits.SetActive(false);
-        MainButtons.SetActive(true);
+        credits.SetActive(false);
+        mainButtons.SetActive(true);
     }
 }
