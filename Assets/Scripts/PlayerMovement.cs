@@ -38,6 +38,12 @@ public class PlayerMovement : MonoBehaviour
     // Auxiliary variable used to smooth the inputs
     private Vector2 smoothVelocity;
 
+    /// <summary>
+    /// Reference to the animator controller
+    /// </summary>
+    [SerializeField]
+    private Animator animator = default;
+
     private void Start()
     {
         movementSpeedMultiplier = baseSpeedMultiplier;
@@ -182,6 +188,12 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="context">The input data</param>
     public void OnPlayerInputMove(InputAction.CallbackContext context)
     {
+        if (context.performed || context.started)
+            animator.SetBool("IsWalking", true);
+
+        if (context.canceled)
+            animator.SetBool("IsWalking", false);
+
         // this may need context checks 
         inputs = context.ReadValue<Vector2>();
     }
