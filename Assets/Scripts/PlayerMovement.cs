@@ -186,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
             // TODO: Here change animation to sprint
             animator.SetFloat("SprintMultiplier", 1.5f);
             playerAudio.Running.Play();
+            playerAudio.Footsteps.Stop();
         }
     }
 
@@ -201,6 +202,7 @@ public class PlayerMovement : MonoBehaviour
         // TODO: Here change animation to walk
         animator.SetFloat("SprintMultiplier", 1f);
         playerAudio.Running.Stop();
+        playerAudio.Footsteps.Play();
     }
 
     /// <summary>
