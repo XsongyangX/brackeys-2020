@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9126919323744039900}
   - component: {fileID: 6611845469275583452}
+  - component: {fileID: 7730852428412558033}
   m_Layer: 0
   m_Name: PaperVHS3
   m_TagString: Tape
@@ -124,3 +125,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.41, y: 0.08, z: 0.68}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7730852428412558033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8494497429987076454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3029508b0036074686d3476ea1c0f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterAI: {fileID: 0}

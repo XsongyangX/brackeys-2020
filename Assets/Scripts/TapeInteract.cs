@@ -73,7 +73,6 @@ public class TapeInteract : MonoBehaviour
 
     private void InteractVHSPlayer()
     {
-        Debug.Log("Interact with VHS player");
 
         VHSPlayerManager vhsPlayerManager = hit.collider.gameObject.GetComponent<VHSPlayerManager>();
 
