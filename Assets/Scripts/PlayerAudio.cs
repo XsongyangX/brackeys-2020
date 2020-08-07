@@ -6,4 +6,6 @@ using FMODUnity;
 public class PlayerAudio : MonoBehaviour
 {
     public StudioEventEmitter Footsteps;
+
+    public StudioEventEmitter Running;
 }

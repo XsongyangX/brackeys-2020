@@ -46,9 +46,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Animator animator = default;
 
+    /// <summary>
+    /// Reference to the audio manager
+    /// </summary>
+    private PlayerAudio playerAudio;
+
     private void Start()
     {
         movementSpeedMultiplier = baseSpeedMultiplier;
+        playerAudio = GetComponent<PlayerAudio>();
     }
 
     private void Update()
@@ -179,6 +185,7 @@ public class PlayerMovement : MonoBehaviour
 
             // TODO: Here change animation to sprint
             animator.SetFloat("SprintMultiplier", 1.5f);
+            playerAudio.Running.Play();
         }
     }
 
@@ -193,6 +200,7 @@ public class PlayerMovement : MonoBehaviour
 
         // TODO: Here change animation to walk
         animator.SetFloat("SprintMultiplier", 1f);
+        playerAudio.Running.Stop();
     }
 
     /// <summary>
