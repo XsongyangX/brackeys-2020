@@ -167,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
             movementSpeedMultiplier = sprintSpeedMultiplier;
 
             // TODO: Here change animation to sprint
+            animator.SetFloat("SprintMultiplier", 1.5f);
         }
     }
 
@@ -180,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
         movementSpeedMultiplier = baseSpeedMultiplier;
 
         // TODO: Here change animation to walk
+        animator.SetFloat("SprintMultiplier", 1f);
     }
 
     /// <summary>
