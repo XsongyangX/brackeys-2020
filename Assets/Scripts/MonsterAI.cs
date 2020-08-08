@@ -23,6 +23,12 @@ public class MonsterAI : MonoBehaviour
     [SerializeField] private float maxVisionAngle = default;
     // Determines if the monster has a valid destination
     private bool hasDestination;
+
+    /// <summary>
+    /// Reference to the animator
+    /// </summary>
+    [SerializeField]
+    private Animator animator = default;
     
     // Called whenever we interact with the linked tape
     public void OnTapeInteract()
@@ -144,10 +150,11 @@ public class MonsterAI : MonoBehaviour
         status = MonsterStatus.Attacking;
 
         // TODO: Add attack mechanic and animation (at the end of the animation, set the Status back to Patrolling or Pursuing)
+        animator.SetTrigger("Attack");
 
         // TODO: Just for debug (Call the method the animation is completed)
         //StartCoroutine(OnAttackCompletedDebug());
-        OnAttackCompleted();
+        //OnAttackCompleted();
     }
 
     private IEnumerator OnAttackCompletedDebug()
@@ -165,7 +172,7 @@ public class MonsterAI : MonoBehaviour
     /// <summary>
     /// Method called whenever an attack animation has been completed
     /// </summary>
-    private void OnAttackCompleted()
+    public void OnAttackCompleted()
     {
         // Remove the stop state
         navMeshAgent.isStopped = false;

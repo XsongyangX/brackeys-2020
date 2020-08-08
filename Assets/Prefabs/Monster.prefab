@@ -206,6 +206,7 @@ MonoBehaviour:
   maxAttackDistance: 4
   target: {fileID: 0}
   maxVisionAngle: 45
+  animator: {fileID: 4278335380139891347}
 --- !u!114 &2182550167704443381
 MonoBehaviour:
   m_ObjectHideFlags: 0
