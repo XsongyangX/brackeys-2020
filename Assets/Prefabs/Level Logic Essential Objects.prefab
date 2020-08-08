@@ -285,6 +285,84 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3583409826409387477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9082151325060766571}
+  - component: {fileID: 2443430593500778232}
+  - component: {fileID: 7101475122279584390}
+  m_Layer: 5
+  m_Name: Picked Up Tape Message
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &9082151325060766571
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583409826409387477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4464842964547718093}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0000076294, y: -137.15}
+  m_SizeDelta: {x: 610.2438, y: 43.79776}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2443430593500778232
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583409826409387477}
+  m_CullTransparentMesh: 0
+--- !u!114 &7101475122279584390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583409826409387477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: You have acquired a tape. Put it into the VHS player on the front counter!
 --- !u!1 &3964542679954097645
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +469,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464842963580834066}
-  m_LocalRotation: {x: 0.1728375, y: 0.003873477, z: -0.0006797168, w: 0.98494256}
+  m_LocalRotation: {x: 0.17283756, y: 0.003781339, z: -0.0006635486, w: 0.98494285}
   m_LocalPosition: {x: 0, y: 2.373817, z: -2.2513256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1222,7 +1300,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464842964484127539}
-  m_LocalRotation: {x: 0.06655024, y: 0.009809691, z: -0.0006543194, w: 0.99773467}
+  m_LocalRotation: {x: 0.06655037, y: 0.009576426, z: -0.0006387602, w: 0.99773693}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1305,6 +1383,8 @@ RectTransform:
   - {fileID: 4464842964268795774}
   - {fileID: 1863578647538481568}
   - {fileID: 2946428491217549858}
+  - {fileID: 9082151325060766571}
+  - {fileID: 54783810959829492}
   m_Father: {fileID: 4464842963738147563}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2533,6 +2613,84 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &8921974729943000733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 54783810959829492}
+  - component: {fileID: 384252363276687876}
+  - component: {fileID: 319157159725726350}
+  m_Layer: 5
+  m_Name: Objective
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &54783810959829492
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921974729943000733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4464842964547718093}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0014954, y: 146.7}
+  m_SizeDelta: {x: 799.9971, y: 32.476116}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &384252363276687876
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921974729943000733}
+  m_CullTransparentMesh: 0
+--- !u!114 &319157159725726350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921974729943000733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Objective: Find a VHS tape'
 --- !u!1001 &4552475310197633890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2605,6 +2763,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 206016772302696283, guid: e81bb54e53395f24283e182ccbe1d110,
+        type: 3}
+      propertyPath: pickedUpMessage
+      value: 
+      objectReference: {fileID: 3583409826409387477}
     - target: {fileID: 548454792052077214, guid: e81bb54e53395f24283e182ccbe1d110,
         type: 3}
       propertyPath: gameManager
@@ -2630,12 +2793,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4552475310197633890}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4464842963541761088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 206016772302696226, guid: e81bb54e53395f24283e182ccbe1d110,
-    type: 3}
-  m_PrefabInstance: {fileID: 4552475310197633890}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4464842963541761081 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 206016772302696283, guid: e81bb54e53395f24283e182ccbe1d110,
@@ -2648,3 +2805,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d2836714ba7a041ba0339530cef2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4464842963541761088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 206016772302696226, guid: e81bb54e53395f24283e182ccbe1d110,
+    type: 3}
+  m_PrefabInstance: {fileID: 4552475310197633890}
+  m_PrefabAsset: {fileID: 0}
