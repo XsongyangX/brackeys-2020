@@ -8,4 +8,6 @@ public class PlayerAudio : MonoBehaviour
     public StudioEventEmitter Footsteps;
 
     public StudioEventEmitter Running;
+
+    public StudioEventEmitter Pickup;
 }
