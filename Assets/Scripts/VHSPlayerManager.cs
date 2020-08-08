@@ -27,7 +27,9 @@ public class VHSPlayerManager : MonoBehaviour
         {
             // NOTE: Just for Debug. Change with a die animation
             gameManager.DecrementEnemyCounter();
-            
+
+
+
             // rewind death sound
             vHSPlayerAudio.RewindDeath.Play();
 

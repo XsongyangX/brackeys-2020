@@ -9,9 +9,9 @@ using UnityEngine.UI;
 public class PlayerInventory : MonoBehaviour
 {
     // Wheter the player has a tape in hands
-    public bool HasTapeInHands { get; private set; }
+    public bool HasTapeInHands { get; set; }
     // Reference to the monster linked to the tape that we have in hands
-    public MonsterAI MonsterLinkedToTape { get; private set; }
+    public MonsterAI MonsterLinkedToTape { get; set; }
 
     private PlayerAudio playerAudio;
 

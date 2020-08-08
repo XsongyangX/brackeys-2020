@@ -69,6 +69,8 @@ public class TapeInteract : MonoBehaviour
 
         if (found)
         {
+            //Debug.Log(hit.collider.gameObject.tag);
+
             if (hit.collider.gameObject.CompareTag("Tape")     ||
                 hit.collider.gameObject.CompareTag("VHSPlayer")  )
             {
@@ -91,6 +93,9 @@ public class TapeInteract : MonoBehaviour
         if (playerInventory.HasTapeInHands)
         {
             vhsPlayerManager.Interact(playerInventory.MonsterLinkedToTape);
+
+            playerInventory.HasTapeInHands = false;
+            playerInventory.MonsterLinkedToTape = null;
 
             // objective UI update
             objectiveMessage.GetComponent<Text>().text = "Objective: Find a VHS tape";
