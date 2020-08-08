@@ -203,10 +203,11 @@ MonoBehaviour:
     NextPathNode: 0
   status: 0
   minChangeNodeDistance: 0.1
-  maxAttackDistance: 4
+  maxAttackDistance: 2
   target: {fileID: 0}
   maxVisionAngle: 45
   animator: {fileID: 4278335380139891347}
+  globalAudio: {fileID: 0}
 --- !u!114 &2182550167704443381
 MonoBehaviour:
   m_ObjectHideFlags: 0
