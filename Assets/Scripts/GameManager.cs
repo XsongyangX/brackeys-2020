@@ -27,11 +27,19 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private SceneTransitionManager sceneTransitionManager = default;
 
+    [SerializeField]
+    private GameObject objectiveMessage = default;
+
+    [SerializeField]
+    private GlobalAudio globalAudio = default;
+
     /// <summary>
     /// When the player dies
     /// </summary>
     public void Defeat()
     {
+        globalAudio.GameOver.Play();
+        objectiveMessage.SetActive(false);
         defeatScreen.SetActive(true);
     }
 
@@ -61,14 +69,21 @@ public class GameManager : MonoBehaviour
         enemiesLeft--;
         if (enemiesLeft < 0) enemiesLeft = 0;
 
-        if(enemiesLeft == 0) 
+        if(enemiesLeft == 0)
         {
-            //Win condition
-            //1.Stop players movement.
-            //2.Victory screen UI
-            //3.Play Victory music
-            victoryScreen.SetActive(true);
+            WinLevel();
         }
+    }
+
+    private void WinLevel()
+    {
+        //Win condition
+        //1.Stop players movement.
+        //2.Victory screen UI
+        //3.Play Victory music
+        globalAudio.GameOver.Play();
+        objectiveMessage.SetActive(false);
+        victoryScreen.SetActive(true);
     }
 
     /// <summary>

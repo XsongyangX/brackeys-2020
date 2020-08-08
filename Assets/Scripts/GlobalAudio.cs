@@ -13,6 +13,8 @@ public class GlobalAudio : MonoBehaviour
 
     public StudioEventEmitter SeenByMonster;
 
+    public StudioEventEmitter GameOver;
+
     /// <summary>
     /// Triggers the chasing sounds
     /// </summary>
