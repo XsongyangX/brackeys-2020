@@ -10,6 +10,13 @@ public class VHSPlayerManager : MonoBehaviour
     [SerializeField]
     private GameManager gameManager = default;
 
+    private VHSPlayerAudio vHSPlayerAudio;
+
+    private void Start()
+    {
+        vHSPlayerAudio = GetComponent<VHSPlayerAudio>();
+    }
+
     /// <summary>
     /// Called whenever the player interacts with the VHSPlayer
     /// </summary>
@@ -20,7 +27,12 @@ public class VHSPlayerManager : MonoBehaviour
         {
             // NOTE: Just for Debug. Change with a die animation
             gameManager.DecrementEnemyCounter();
-            Destroy(monster.gameObject);
+            
+            // rewind death sound
+            vHSPlayerAudio.RewindDeath.Play();
+
+            // monster dies
+            monster.RewindDeath();
         }
     }
 }

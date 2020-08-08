@@ -2,6 +2,7 @@
 using UnityEngine.AI;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 public class MonsterAI : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MonsterAI : MonoBehaviour
     [SerializeField] private MonsterStatus status = default;
     // Minimum distance before it changes node destination
     [SerializeField] private float minChangeNodeDistance = default;
+
     // Maximum distance to attack the target
     [SerializeField] private float maxAttackDistance = default;
     // Target to pursue, when visible
@@ -212,6 +214,11 @@ public class MonsterAI : MonoBehaviour
         }
 
         return nearestIndex;
+    }
+
+    public void RewindDeath()
+    {
+        Destroy(this.gameObject);
     }
 }
 
