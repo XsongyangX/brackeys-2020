@@ -35,6 +35,9 @@ public class MonsterAI : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GlobalAudio globalAudio = default;
+    
+    [SerializeField]
+    private float maxVisionDistance = 7f;
 
     private MonsterStatus Status { get => status;
         set {
@@ -90,7 +93,14 @@ public class MonsterAI : MonoBehaviour
             Vector3 direction = target.transform.position - transform.position;
 
             // If the angle between the target and the monster is within the maxVisionAngle, it means that the target is visible by the monster
-            if (Vector3.Angle(transform.forward, direction) < maxVisionAngle)
+            bool inAngle = Vector3.Angle(transform.forward, direction) < maxVisionAngle;
+            
+            bool inView = false;
+
+            if (inAngle)
+                inView = Physics.Raycast(this.transform.position, target.transform.position, maxVisionDistance);
+
+            if (inView)
             {
                 // MAYBE: Add timer here if we want to "delay" the pursuing process to give the player some time to hide before being pursued
 

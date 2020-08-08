@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     }
 
     int enemiesLeft;
+    public string LevelName = "LevelLayout";
 
     private void Start() 
     {
@@ -101,6 +102,6 @@ public class GameManager : MonoBehaviour
     public void ReplayButton()
     {
         //SceneManager.LoadScene("LevelTest");
-        sceneTransitionManager.FadeToScene("LevelTest");
+        sceneTransitionManager.FadeToScene(LevelName);
     }
 }
