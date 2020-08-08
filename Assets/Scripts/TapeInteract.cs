@@ -85,7 +85,6 @@ public class TapeInteract : MonoBehaviour
 
     private void InteractVHSPlayer()
     {
-
         VHSPlayerManager vhsPlayerManager = hit.collider.gameObject.GetComponent<VHSPlayerManager>();
 
         // If the player has a tape in hands
@@ -120,7 +119,7 @@ public class TapeInteract : MonoBehaviour
         {
             // Here we have to destroy the tape, so that we cannot interact with it anymore
             playerInventory.PickupTape(linkedMonster);
-            Destroy(tapeManager.gameObject);
+            //Destroy(tapeManager.gameObject);
         }
     }
 
