@@ -89,16 +89,7 @@ public class MonsterAI : MonoBehaviour
         // If there is a target
         if (target)
         {
-            // Calculate the direction between the monster and the target
-            Vector3 direction = target.transform.position - transform.position;
-
-            // If the angle between the target and the monster is within the maxVisionAngle, it means that the target is visible by the monster
-            bool inAngle = Vector3.Angle(transform.forward, direction) < maxVisionAngle;
-            
-            bool inView = false;
-
-            if (inAngle)
-                inView = Physics.Raycast(this.transform.position, target.transform.position, maxVisionDistance);
+            bool inView = IsRangeOfTarget();
 
             if (inView)
             {
@@ -118,6 +109,21 @@ public class MonsterAI : MonoBehaviour
             // If there is no target, keep patrolling
             Status = MonsterStatus.Patrolling;
         }
+    }
+
+    public bool IsRangeOfTarget()
+    {
+        // Calculate the direction between the monster and the target
+        Vector3 direction = target.transform.position - transform.position;
+
+        // If the angle between the target and the monster is within the maxVisionAngle, it means that the target is visible by the monster
+        bool inAngle = Vector3.Angle(transform.forward, direction) < maxVisionAngle;
+
+        bool inView = false;
+
+        if (inAngle)
+            inView = Physics.Raycast(this.transform.position, target.transform.position, maxVisionDistance);
+        return inView;
     }
 
     /// <summary>
@@ -204,7 +210,7 @@ public class MonsterAI : MonoBehaviour
     /// <summary>
     /// Method called whenever an attack animation has been completed
     /// </summary>
-    public void OnAttackCompleted()
+    public void OnAttackCompleted(bool isHit)
     {
         // Remove the stop state
         navMeshAgent.isStopped = false;
@@ -214,7 +220,8 @@ public class MonsterAI : MonoBehaviour
         hasDestination = false;
 
         // player takes (fatal) damage
-        target.GetComponent<PlayerHealth>().TakeDamage();
+        if (isHit)
+            target.GetComponent<PlayerHealth>().TakeDamage();
     }
 
     /// <summary>
