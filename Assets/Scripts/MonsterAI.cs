@@ -35,6 +35,9 @@ public class MonsterAI : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GlobalAudio globalAudio = default;
+    
+    [SerializeField]
+    private float maxVisionDistance = 7f;
 
     private MonsterStatus Status { get => status;
         set {
@@ -86,11 +89,9 @@ public class MonsterAI : MonoBehaviour
         // If there is a target
         if (target)
         {
-            // Calculate the direction between the monster and the target
-            Vector3 direction = target.transform.position - transform.position;
+            bool inView = IsRangeOfTarget();
 
-            // If the angle between the target and the monster is within the maxVisionAngle, it means that the target is visible by the monster
-            if (Vector3.Angle(transform.forward, direction) < maxVisionAngle)
+            if (inView)
             {
                 // MAYBE: Add timer here if we want to "delay" the pursuing process to give the player some time to hide before being pursued
 
@@ -108,6 +109,21 @@ public class MonsterAI : MonoBehaviour
             // If there is no target, keep patrolling
             Status = MonsterStatus.Patrolling;
         }
+    }
+
+    public bool IsRangeOfTarget()
+    {
+        // Calculate the direction between the monster and the target
+        Vector3 direction = target.transform.position - transform.position;
+
+        // If the angle between the target and the monster is within the maxVisionAngle, it means that the target is visible by the monster
+        bool inAngle = Vector3.Angle(transform.forward, direction) < maxVisionAngle;
+
+        bool inView = false;
+
+        if (inAngle)
+            inView = Physics.Raycast(this.transform.position, target.transform.position, maxVisionDistance);
+        return inView;
     }
 
     /// <summary>
@@ -194,7 +210,7 @@ public class MonsterAI : MonoBehaviour
     /// <summary>
     /// Method called whenever an attack animation has been completed
     /// </summary>
-    public void OnAttackCompleted()
+    public void OnAttackCompleted(bool isHit)
     {
         // Remove the stop state
         navMeshAgent.isStopped = false;
@@ -204,7 +220,8 @@ public class MonsterAI : MonoBehaviour
         hasDestination = false;
 
         // player takes (fatal) damage
-        target.GetComponent<PlayerHealth>().TakeDamage();
+        if (isHit)
+            target.GetComponent<PlayerHealth>().TakeDamage();
     }
 
     /// <summary>

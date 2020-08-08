@@ -22,7 +22,11 @@ public class MonsterAttackState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponentInParent<MonsterAI>().OnAttackCompleted();
+        MonsterAI monsterAI = animator.GetComponentInParent<MonsterAI>();
+        if (monsterAI.IsRangeOfTarget())
+            monsterAI.OnAttackCompleted(true);
+        else
+            monsterAI.OnAttackCompleted(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
