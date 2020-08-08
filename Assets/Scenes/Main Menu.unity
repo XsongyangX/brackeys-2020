@@ -812,8 +812,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Credits\r\nSong Yang (The Mushroom Wonder) - Lead Programmer, Producer\r\nPenca53
     - Programmer\r\nPrestyn Price - Narrative Designer\r\nPatrick Hart\u2014music
-    & sound design, graphic design\r\nStrawberry Cheetah - Concept & 3D Artist\r\ne\r\ne\r\ne\r\nFor
-    Brackey's Jam 2020 2nd edition: Rewind\r\n"
+    & sound design, graphic design\r\nStrawberry Cheetah - Concept & 3D Artist\r\nSebastian
+    Bolinger - 3D Artist\r\nShaun Bartoo - 3D Artist\r\nSmokiB - Programming\r\nFor
+    Brackey's Jam 2020 2nd edition: Rewind\r"
 --- !u!222 &681669324
 CanvasRenderer:
   m_ObjectHideFlags: 0
