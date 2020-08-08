@@ -235,8 +235,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 245, y: -98}
-  m_SizeDelta: {x: 89.56702, y: 38.0495}
+  m_AnchoredPosition: {x: 75.04, y: -36.45}
+  m_SizeDelta: {x: 53.345596, y: 24.156338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136482379
 MonoBehaviour:
@@ -450,8 +450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 245.00002, y: -38}
-  m_SizeDelta: {x: 160, y: 42.074234}
+  m_AnchoredPosition: {x: -92.72, y: -38}
+  m_SizeDelta: {x: 86.24716, y: 27.260208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277617807
 MonoBehaviour:
@@ -810,27 +810,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits
-
-    Song Yang (The Mushroom Wonder) - Lead Programmer, Producer
-
-    Penca53
-    - Programmer
-
-    e
-
-    e
-
-    e
-
-    e
-
-    e
-
-    e
-
-    For Brackey''s Jam
-    2020 2nd edition: Rewind'
+  m_Text: "Credits\r\nSong Yang (The Mushroom Wonder) - Lead Programmer, Producer\r\nPenca53
+    - Programmer\r\nPrestyn Price - Narrative Designer\r\nPatrick Hart\u2014music
+    & sound design, graphic design\r\nStrawberry Cheetah - Concept & 3D Artist\r\ne\r\ne\r\ne\r\nFor
+    Brackey's Jam 2020 2nd edition: Rewind\r\n"
 --- !u!222 &681669324
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -908,7 +891,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Credits
+  m_Text: "Credits\r"
 --- !u!222 &747825843
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1103,8 +1086,8 @@ Camera:
   m_GameObject: {fileID: 918251500}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1332,8 +1315,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 245, y: 21}
-  m_SizeDelta: {x: 106.87863, y: 67.94398}
+  m_AnchoredPosition: {x: -2.84, y: -38}
+  m_SizeDelta: {x: 66.656555, y: 39.94391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999794526
 MonoBehaviour:
@@ -1734,7 +1717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317, y: -142}
+  m_AnchoredPosition: {x: -0.00000011921, y: -141}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181423376
