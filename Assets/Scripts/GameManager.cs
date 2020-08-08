@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
             //1.Stop players movement.
             //2.Victory screen UI
             //3.Play Victory music
-            Debug.Log("You have won");
             victoryScreen.SetActive(true);
         }
     }

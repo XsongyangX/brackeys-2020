@@ -38,6 +38,18 @@ public class TapeInteract : MonoBehaviour
     /// </summary>
     private bool isInteractionInRange;
 
+    /// <summary>
+    /// Reference to the objective message
+    /// </summary>
+    [SerializeField]
+    private GameObject objectiveMessage = default;
+
+    /// <summary>
+    /// Reference to the hint message
+    /// </summary>
+    [SerializeField]
+    private GameObject hintMessage = default;
+
     // Update is called once per frame
     void Update()
     {
@@ -80,20 +92,35 @@ public class TapeInteract : MonoBehaviour
         if (playerInventory.HasTapeInHands)
         {
             vhsPlayerManager.Interact(playerInventory.MonsterLinkedToTape);
+
+            // objective UI update
+            objectiveMessage.GetComponent<Text>().text = "Objective: Find a VHS tape";
+
+            // hint message
+            hintMessage.SetActive(true);
+            hintMessage.GetComponent<Text>().text = "Rewinding the tape captures the monster back into the VHS";
+            StartCoroutine(DisablesIn(hintMessage, 5f));
         }
+    }
+
+    private IEnumerator DisablesIn(GameObject gameObject, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        gameObject.SetActive(false);
     }
 
     private void InteractTape()
     {
-        Debug.Log("Interact with tape");
         // Get the monster linked to the tape
-        MonsterAI linkedMonster = hit.collider.gameObject.GetComponent<TapeManager>().monsterAI;
+        TapeManager tapeManager = hit.collider.gameObject.GetComponent<TapeManager>();
+        MonsterAI linkedMonster = tapeManager.monsterAI;
 
         // If the player hasn't a tape in hands yet
         if (!playerInventory.HasTapeInHands)
         {
-            // TODO: Here we have to destroy the tape, so that we cannot interact with it anymore
+            // Here we have to destroy the tape, so that we cannot interact with it anymore
             playerInventory.PickupTape(linkedMonster);
+            Destroy(tapeManager.gameObject);
         }
     }
 

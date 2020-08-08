@@ -7,14 +7,15 @@ using UnityEngine;
 /// </summary>
 public class TapeManager : MonoBehaviour
 {
+    
     // Reference to the Monster linked to this tape
     public MonsterAI monsterAI;
 
-    // Called whenever we interact with the tape
-    /*
-    public void Interact()
+    /// <summary>
+    /// Destroys the tape
+    /// </summary>
+    public void PickUp()
     {
-        monsterAI?.OnTapeInteract();
+        Destroy(this.gameObject);
     }
-    */
 }

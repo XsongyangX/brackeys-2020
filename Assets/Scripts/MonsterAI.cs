@@ -2,6 +2,7 @@
 using UnityEngine.AI;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 public class MonsterAI : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MonsterAI : MonoBehaviour
     [SerializeField] private MonsterStatus status = default;
     // Minimum distance before it changes node destination
     [SerializeField] private float minChangeNodeDistance = default;
+
     // Maximum distance to attack the target
     [SerializeField] private float maxAttackDistance = default;
     // Target to pursue, when visible
@@ -46,7 +48,6 @@ public class MonsterAI : MonoBehaviour
         }
         else
         {
-            Debug.Log("The monster is still attacking the player!");
         }
     }
 
@@ -67,14 +68,12 @@ public class MonsterAI : MonoBehaviour
                 // MAYBE: Add timer here if we want to "delay" the pursuing process to give the player some time to hide before being pursued
 
                 status = MonsterStatus.Pursuing;
-                Debug.Log("The monster can see the player!");
             }
             else
             {
                 // MAYBE: Add timer here if we want to "delay" the transition between pursuing to patrolling state so that the monster tries to look around to see if there is the player (or some other mechanic)
 
                 status = MonsterStatus.Patrolling;
-                Debug.Log("The monster can't see the player!");
             }
         }
         else
@@ -145,7 +144,6 @@ public class MonsterAI : MonoBehaviour
         status = MonsterStatus.Attacking;
 
         // TODO: Add attack mechanic and animation (at the end of the animation, set the Status back to Patrolling or Pursuing)
-        Debug.Log("The monster has attacked the target!");
 
         // TODO: Just for debug (Call the method the animation is completed)
         //StartCoroutine(OnAttackCompletedDebug());
@@ -212,6 +210,11 @@ public class MonsterAI : MonoBehaviour
         }
 
         return nearestIndex;
+    }
+
+    public void RewindDeath()
+    {
+        Destroy(this.gameObject);
     }
 }
 
