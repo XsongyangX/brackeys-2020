@@ -122,6 +122,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{ebef7054-17de-436d-918d-e20d248c9aa9}">
+		<property name="volume">
+			<value>-3.5</value>
+		</property>
 		<property name="name">
 			<value>sneak</value>
 		</property>
@@ -152,6 +155,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{029616c8-3dde-478c-9af6-60fbcc139f17}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>VHS sneak</value>
 		</property>
