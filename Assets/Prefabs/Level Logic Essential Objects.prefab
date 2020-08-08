@@ -469,7 +469,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464842963580834066}
-  m_LocalRotation: {x: 0.17283756, y: 0.003781339, z: -0.0006635486, w: 0.98494285}
+  m_LocalRotation: {x: 0.17283756, y: 0.003781366, z: -0.00066355325, w: 0.98494285}
   m_LocalPosition: {x: 0, y: 2.373817, z: -2.2513256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1300,7 +1300,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464842964484127539}
-  m_LocalRotation: {x: 0.06655037, y: 0.009576426, z: -0.0006387602, w: 0.99773693}
+  m_LocalRotation: {x: 0.06655038, y: 0.009576425, z: -0.00063876034, w: 0.99773693}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1603,7 +1603,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4464842964705015671}
-  m_LocalRotation: {x: 0.24266961, y: 0.000000016692061, z: -0.0000000041754653, w: 0.970109}
+  m_LocalRotation: {x: 0.24266961, y: -0.000000016692068, z: 0.000000004175467, w: 0.970109}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1790,6 +1790,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5c81e625-9112-4c74-a4fb-985031f79cec
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4464842963541761095}
+        m_MethodName: OnPlayerInputSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 575e4629-3889-4fed-b360-4258a99f2db3
+    m_ActionName: Player/Sprint[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2768,6 +2783,11 @@ PrefabInstance:
       propertyPath: pickedUpMessage
       value: 
       objectReference: {fileID: 3583409826409387477}
+    - target: {fileID: 206016772302696283, guid: e81bb54e53395f24283e182ccbe1d110,
+        type: 3}
+      propertyPath: objectiveMessage
+      value: 
+      objectReference: {fileID: 8921974729943000733}
     - target: {fileID: 548454792052077214, guid: e81bb54e53395f24283e182ccbe1d110,
         type: 3}
       propertyPath: gameManager

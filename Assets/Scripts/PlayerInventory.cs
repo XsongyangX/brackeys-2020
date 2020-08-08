@@ -19,13 +19,18 @@ public class PlayerInventory : MonoBehaviour
     /// Reference to the text of having picked up a tape
     /// </summary>
     [SerializeField]
-    private GameObject pickedUpMessage;
+    private GameObject pickedUpMessage = default;
 
     /// <summary>
     /// Reference to the objective text
     /// </summary>
     [SerializeField]
-    private GameObject objectiveMessage;
+    private GameObject objectiveMessage = default;
+
+    private void Start()
+    {
+        playerAudio = GetComponent<PlayerAudio>();
+    }
 
     /// <summary>
     /// Sets HasTapeInHands to true and stores the reference to the monster
